@@ -5,10 +5,11 @@
   font-family: "Rubik", sans-serif
 }
 
+/* -- HEADEEEEEEEEEEEEEEEEEEEEEER -- */
 .container__principalHeader {
   width: 100vw;
   height: 8vh;
-  background-color: rgb(178, 57, 235);
+  background-color: #ae2012;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -55,7 +56,7 @@
 .buttonSearch:hover,
 .header__buttonAdd:hover {
   cursor: pointer;
-  background-color: rgb(214, 150, 243);
+  background-color: #c54a3e;
 }
 
 .header__buttonAdd {
@@ -70,3 +71,19 @@
   align-items: center;
   transition: .2s ease;
 }
+
+ /* -- MAIN -- */
+ .container__view {
+  display: grid;
+  grid-template-columns: 0.2fr 0.8fr;
+ }
+
+ .list {
+  background-color: #ee9b00;
+  height: 92vh;
+ }
+
+ .store {
+  background-color: #e9d8a6;
+  height: 92vh;
+ }
