@@ -1,0 +1,72 @@
+/* -- GENERALES -- */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Rubik", sans-serif
+}
+
+.container__principalHeader {
+  width: 100vw;
+  height: 8vh;
+  background-color: rgb(178, 57, 235);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.container__contentHeader {
+  width: 65%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem;
+}
+
+.headerSearch {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1vh;
+}
+
+.inputHeader {
+  border-radius: 0.5rem;
+  border: none;
+  padding: 0.4rem;
+  outline: none;
+  height: 2vh;
+  width: 20vw;
+  font-size: 1.8vh;
+}
+
+.buttonSearch {
+  border: 1px solid white;
+  background-color: transparent;
+  border-radius: 0.4rem;
+  padding: 0.2rem;
+  width: 9vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  transition: .2s ease;
+
+}
+
+.buttonSearch:hover,
+.header__buttonAdd:hover {
+  cursor: pointer;
+  background-color: rgb(214, 150, 243);
+}
+
+.header__buttonAdd {
+  width: 13vw;
+  border-radius: 0.4rem;
+  padding: 0.2rem;
+  border: 1px solid white;
+  background-color: transparent;
+  color : white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transition: .2s ease;
+}
