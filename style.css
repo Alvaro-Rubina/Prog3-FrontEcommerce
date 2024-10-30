@@ -78,7 +78,7 @@
   grid-template-columns: 0.2fr 0.8fr;
  }
 
- .list {
+ .listAside {
   background-color: #ee9b00;
   height: 92vh;
  }
@@ -86,4 +86,41 @@
  .store {
   background-color: #e9d8a6;
   height: 92vh;
+ }
+
+ /* -- LIST ASIDE -- */
+ .listAside {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+ }
+
+ .listAside h2 {
+  display: flex;
+  margin-top: 2vh;
+  font-size: 4vh;
+  justify-content: center;
+  align-items: center;
+ }
+
+ .listAside ul {
+  margin-top: 3vh;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  gap: 1vh;
+ }
+
+ .listAside ul li {
+  font-size: 2.5vh;
+  font-weight: 500;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+ }
+
+ .liActive {
+  background-color: #c54a3e;
+  color: white;
  }
