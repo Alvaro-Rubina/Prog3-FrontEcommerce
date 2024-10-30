@@ -51,6 +51,35 @@
 
         </div>
       </div>
+
+      <!-- POP UP -->
+      <div class="popUpContainer__principal" id="modalPopUp">
+        <div class="popUpContainer">
+          <div class="containerTitlePopUp">
+            <h1>Agregar o modificar un producto</h1>
+          </div>
+          <div class="containerInputs__popUp">
+            <input placeholder="Ingrese un nombre" id="nombre" type="text">
+            <input placeholder="Precio" value="0" id="precio" type="number">
+            <input placeholder="Ingrese una url de imagen" id="img" type="text">
+
+            <select id="categoria">
+              <option>Seleccione una categoria</option>
+              <option>Hamburguesas</option>
+              <option>Papas Fritas</option>
+              <option>Bebidas</option>
+            </select>
+          </div>
+
+          <div class="containerButtonsPopUp">
+            <button class="buttonPopUp cancel" id="cancelButton">Cancelar</button>
+            <button class="buttonPopUp accept" id="acceptButton">Aceptar</button>
+            <button class="buttonPopUp delete" id="deleteButton">Eliminar</button>
+          </div>
+
+        </div>
+      </div>
+
     </main>
     <script type="module" src="/main.js"></script>
   </body>
