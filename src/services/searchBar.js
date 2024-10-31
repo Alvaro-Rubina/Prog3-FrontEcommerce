@@ -1,4 +1,4 @@
-import { handleGetProductLocalStorage } from "../persistence/localstorage";
+import { handleGetProductLocalStorage } from "../persistence/localStorage";
 import { handleRenderList } from "../views/store";
 
 export const handleSearchProductByName = () => {
