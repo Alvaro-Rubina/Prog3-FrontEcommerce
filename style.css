@@ -148,8 +148,7 @@
 
  .sectionStore img {
   width: 100%;
-  border-radius: 0.4rem;
-  box-shadow: 2px 2px 5px 4px rgba(82, 81, 81, 0.3);
+  border-radius: 0.4rem; 
  }
 
  /* -- LIST ASIDE -- */
@@ -264,4 +263,31 @@
 
  .delete {
   background-color: #c6343d;
+ }
+
+ /* -- MEDIA QUERIES -- */
+ @media screen and (min-width: 1280px) {
+  .containerProductStore {
+    grid-template-columns: repeat(4, .6fr);
+   }
+  
+   .containerTargetItem {
+    width: 15vw;
+   }
+ }
+
+ /* -- SCROLLBAR -- */
+ ::-webkit-scrollbar {
+  width: 0.7rem;
+  background-color: white;
+  border-radius: 0.4rem;
+ }
+
+ ::-webkit-scrollbar-thumb {
+  background-color: #c54a3e;
+  border-radius: 0.4rem;
+ }
+
+ ::-webkit-scrollbar-thumb:hover {
+  background-color: #cf675e;
  }
