@@ -2,7 +2,7 @@ import { productoActivo } from "../../main";
 import { handleGetProductLocalStorage ,setInLocalStorage } from "../persistence/localstorage";
 import { closeModal } from "../views/modal";
 import { handleGetProductsToStore, handleRenderList } from "../views/store";
-
+import Swal from "sweetalert2";
 
 // Guardar el producto
 const acceptButton = document.getElementById('acceptButton');
@@ -33,8 +33,13 @@ const handleSaveOrModifyElements = () => {
             precio, 
             img, 
             categoria
-        }
+        };
     }   
+    Swal.fire({
+        title: "Hecho!",
+        text: "El producto se ha guardado correctamente",
+        icon: "success"
+      });
 
     setInLocalStorage(object);
     handleGetProductsToStore();
@@ -44,11 +49,33 @@ const handleSaveOrModifyElements = () => {
 
 // Eliminar producto
 export const handleDeleteProduct = () => {
-    const products = handleGetProductLocalStorage();
-    const result = products.filter((el) => el.id !== productoActivo.id);
 
-    localStorage.setItem('products', JSON.stringify(result));
-    const newProducts = handleGetProductLocalStorage();
-    handleRenderList(newProducts);
-    closeModal();
+    Swal.fire({
+        title: "¿Estás seguro de eliminar este producto?",
+        text: "No podrás revertir esta acción!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí, eliminar!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Eliminado!",
+            text: "El producto ha sido eliminado.",
+            icon: "success"
+          });
+
+          const products = handleGetProductLocalStorage();
+          const result = products.filter((el) => el.id !== productoActivo.id);
+          localStorage.setItem('products', JSON.stringify(result));
+          const newProducts = handleGetProductLocalStorage();
+          handleRenderList(newProducts);
+          closeModal();
+        } else {
+            closeModal();
+        }
+      });
+
+    
 };
