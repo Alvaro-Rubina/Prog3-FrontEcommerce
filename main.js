@@ -4,8 +4,17 @@ import { handleGetProductsToStore } from "./src/views/store";
 import './style.css';
 
 // Aplicacion
-handleGetProductsToStore();
+export let categoriaActiva = null;
+export const setCategoriaActiva = (categoriaIn) => {
+    categoriaActiva = categoriaIn;
+}
 
+export let productoActivo = null;
+export const setProductoActivo = (productoIn) => {
+    productoActivo = productoIn;
+}
+
+handleGetProductsToStore();
 renderCategories();
 
 // Agregar Productos
@@ -26,15 +35,42 @@ const handleCancelButton = () => {
 };
 
 // Abrir y cerrar modal
-const openModal = () => {
+export const openModal = () => {
     const modal = document.getElementById('modalPopUp');
     modal.style.display = 'flex';
+
+    if (productoActivo) {
+        const nombre = document.getElementById('nombre'),
+        precio = document.getElementById('precio'),
+        img = document.getElementById('img'),
+        categoria = document.getElementById('categoria');
+        nombre.value = productoActivo.nombre;
+        img.value = productoActivo.img;
+        precio.value = productoActivo.precio;
+        categoria.value = productoActivo.categoria;
+    }
 }
 
-const closeModal = () => {
+export const closeModal = () => {
     const modal = document.getElementById('modalPopUp');
     modal.style.display = 'none';
+    setProductoActivo(null);
+
+    resetModal();
 }
+
+const resetModal = () => {
+
+    const nombre = document.getElementById('nombre'),
+    precio = document.getElementById('precio'),
+    img = document.getElementById('img'),
+    categoria = document.getElementById('categoria');
+    nombre.value = "";
+    img.value = "";
+    precio.value = 0;
+    categoria.value = "Seleccione una categoria";
+}
+
 
 // Guardar o modificar productos
 
@@ -48,17 +84,29 @@ const handleSaveOrModifyElements = () => {
     precio = document.getElementById('precio').value,
     img = document.getElementById('img').value,
     categoria = document.getElementById('categoria').value;
+    let object = null;     
 
-    let object = {
-        id: new Date().toISOString(),
-        nombre, 
-        precio, 
-        img, 
-        categoria
-    }
+    if (productoActivo) {
+        object = {
+            ...productoActivo,
+            nombre, 
+            precio, 
+            img, 
+            categoria
+        }
+    } else {
+        object = {
+            id: new Date().toISOString(),
+            nombre, 
+            precio, 
+            img, 
+            categoria
+        }
+    }   
 
     setInLocalStorage(object);
 
-    // closeModal();
+    handleGetProductsToStore();
+    closeModal();
     
 };

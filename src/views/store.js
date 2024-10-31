@@ -1,3 +1,4 @@
+import { openModal, setProductoActivo } from "../../main";
 import { handleGetProductLocalStorage } from "../persistence/localstorage";
 
 export const handleGetProductsToStore = () => {
@@ -9,34 +10,36 @@ export const handleGetProductsToStore = () => {
 export const handleRenderList = (productsIn) => {
 
     const burgers = productsIn.filter((el) => el.categoria === 'Hamburguesas');
-    const papasFritas = productsIn.filter((el) => el.categoria === 'Papas Fritas');
+    const papasFritas = productsIn.filter((el) => el.categoria === 'Papas');
     const bebidas = productsIn.filter((el) => el.categoria === 'Bebidas');
 
     const renderProductGroup = (products, title) => {
-        console.log(products);
+        
         if (products.length > 0) {
             const productsHTML = products.map((product, index) => {
-                return `<div id='product-${product.categoria}-${index}'>
-                <div> 
-                    <img src=${product.img}/>
-                    <div> 
-                        <h2>${product.nombre}</h2>
-                    </div>
-                    <div> 
-                        <p><b>Precio: </b> ${product.precio}</p>
-                        <p><b>Categoria: </b> ${product.categoria}</p>
-                    </div>
-                </div> 
-            </div>`
+                return `<div class='containerTargetItem' id='product-${product.categoria}-${index}'>
+                            <div> 
+                                <img src='${product.img}'/>
+                                <div> 
+                                    <h2>${product.nombre}</h2>
+                                </div>
+                                <div class='targetProps'> 
+                                    <p><b>Precio: </b> ${product.precio}</p>
+                                </div>
+                            </div> 
+                        </div>`
             });
 
             return `
-            <section> 
-                <h3>${title}</h3>
-                <div> 
-                    ${productsHTML.join('')}
+            <section class='sectionStore'> 
+                <div class='containterTitleSection'>
+                    <h3>${title}</h3>
                 </div>
-            </section>`
+                <div class='containerProductStore'> 
+                    ${productsHTML.join("")}
+                </div>
+            </section>
+            `;
         } else {
             return "";
         }
@@ -46,7 +49,7 @@ export const handleRenderList = (productsIn) => {
     const appContainer = document.getElementById('storeContainer');
     appContainer.innerHTML = `
         ${renderProductGroup(burgers, 'Hamburguesas')}
-        ${renderProductGroup(papasFritas, 'Papas Fritas')}
+        ${renderProductGroup(papasFritas, 'Papas')}
         ${renderProductGroup(bebidas, 'Bebidas')}`;
 
         const addEvents = (productsIn) => {
@@ -55,7 +58,8 @@ export const handleRenderList = (productsIn) => {
                     const productContainer = document.getElementById(
                         `product-${element.categoria}-${index}`);
                     productContainer.addEventListener('click', () => {
-                        console.log('productoActivo', element);
+                        setProductoActivo(element);
+                        openModal();
                     });
                     
                 });
