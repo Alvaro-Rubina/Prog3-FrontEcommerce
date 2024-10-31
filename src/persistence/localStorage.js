@@ -10,19 +10,19 @@ export const handleGetProductLocalStorage = () => {
 
 // Guardar en local storage
 export const setInLocalStorage = (productIn) => {
+    let productsInLocal = handleGetProductLocalStorage() || []; // Definir el arreglo antes de la condición
 
     if (productIn) {
-        let productsInLocal = handleGetProductLocalStorage();
         const existingIndex = productsInLocal.findIndex((productsLocal) => 
             productsLocal.id === productIn.id
         );
 
-        if ( existingIndex !== -1) {
+        if (existingIndex !== -1) {
             productsInLocal[existingIndex] = productIn;
-    
         } else {
             productsInLocal.push(productIn);
         }
     }
-    localStorage.setItem('products', JSON.stringify(productsInLocal))
+    
+    localStorage.setItem('products', JSON.stringify(productsInLocal));
 };
